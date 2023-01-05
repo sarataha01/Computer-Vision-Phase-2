@@ -206,11 +206,6 @@ def perception_step(Rover, debug):
 
         nav_pix = Rover.worldmap[:, :, 2] > 0
         Rover.worldmap[nav_pix, 0] = 0
-        # clip to avoid overflow
-        Rover.worldmap = np.clip(Rover.worldmap, 0, 255)
-        Rover.worldmap[yw_obst , xw_obst, 0] += 1
-        Rover.worldmap[yw_rock, xw_rock, 1] += 1
-        Rover.worldmap[y_world, x_world, 2] += 1
 
      # 8) Convert rover-centric pixel positions to polar coordinates
     nav_dists, nav_angles = to_polar_coords(x_thresh, y_thresh)
